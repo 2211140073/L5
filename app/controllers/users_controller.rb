@@ -6,10 +6,15 @@ class UsersController < ApplicationController
    @user=User.new 
   end
   def create
+    #文字列.include?(検索文字列)
     user_pass = BCrypt::Password.create(params[:user][:pass])
-    user = User.new(uid: params[:user][:uid], pass: user_pass)
-    user.save
-    redirect_to top_main_path
+    if User.exists?(uid: params[:user][:uid])
+      render 'error',status: 422
+    else
+      user = User.new(uid: params[:user][:uid], pass: user_pass)
+      user.save
+      redirect_to top_main_path
+    end
   end
   def destroy
     user = User.find(params[:id])
@@ -18,3 +23,13 @@ class UsersController < ApplicationController
   end
 end
 
+=begin
+   if @users.include?(uid: params[:user][:uid])
+      user = User.new(uid: params[:user][:uid], pass: user_pass)
+      user.save
+      redirect_to top_main_path
+    else
+      p"error"
+    end
+
+=end

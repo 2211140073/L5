@@ -23,7 +23,21 @@ class TopController < ApplicationController
         session.delete(:login_uid)
         redirect_to top_main_path
     end
-    
+    def new
+       @tweet=Tweet.new 
+    end
+    def create
+        t = Tweet.new(message: params[:tweet][:message])
+        t.user=User.first
+        t.save
+        redirect_to '/'
+        #top_main_path
+    end
+      def destroy
+        t = Tweet.find(params[:id])
+        t.destroy
+        redirect_to top_path
+      end
 end
 
 =begin
