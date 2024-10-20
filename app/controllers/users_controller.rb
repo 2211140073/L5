@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     else
       user = User.new(uid: params[:user][:uid], pass: user_pass)
       user.save
+      #redirect_to '/'
       redirect_to top_main_path
     end
   end

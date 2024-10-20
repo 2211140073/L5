@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'users/index'
   resources :users
-  resources :top
+  resources :top , except: [:show]
+  resources :likes
   root 'top#main'
   get 'top/main'
   post 'top/login'
@@ -18,3 +19,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 end
+
+#22：00

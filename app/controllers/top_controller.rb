@@ -28,7 +28,7 @@ class TopController < ApplicationController
     end
     def create
         t = Tweet.new(message: params[:tweet][:message])
-        t.user=User.first
+        t.user=User.find_by(uid: session[:login_uid])
         t.save
         redirect_to '/'
         #top_main_path
