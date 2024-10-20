@@ -12,8 +12,6 @@ end
 
 
 =begin
-
-
 class CreateLikes < ActiveRecord::Migration[7.1]
   def change
     drop_table :likes, if_exists: true
