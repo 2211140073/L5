@@ -268,7 +268,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
-  bundler (~> 2.5.18)
   capybara
   debug
   importmap-rails
